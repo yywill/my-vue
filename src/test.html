@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>vuejs demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+
+        *{
+            border-radius: 0 !important;
+        }
+        body{
+            background-color: #E7F7F9 ;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+    
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id='app'>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>from</label>
+                    <select name="" id="" class="form-control">
+                        <option value="">usd</option>
+                        <option value="">hkd</option>
+                        <option value="">rmb</option>
+                        <option value="">jp</option>
+                    </select>
+    
+                </div>
+    
+                <div class="col-md-6">
+                    <label>to</label>
+                    <select name="" id="" class="form-control">
+                        <option value="">usd</option>
+                        <option value="">hkd</option>
+                        <option value="">rmb</option>
+                        <option value="">jp</option>
+                    </select>
+    
+                </div>
+    
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <input type="text" placeholder="Amount" class="form-control my-5" />
+                    <div class="text-center">
+                        <button class="btn btn-lg btn-primary">convert</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row"></div>
+
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <h1 class="text-center display-2 mt-5">54.03</h1>
+                </div>
+
+            </div>
+    
+        </div>
+    
+    
+    </div>
+
+
+    
+</body>
+</html>
