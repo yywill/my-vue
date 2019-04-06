@@ -25,43 +25,15 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <div id='app'>
-        <div class="container my-5">
+        <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <label>from</label>
-                    <select  v-model="from" name="" id="" class="form-control">
-                        <option :value="currency.id" v-for="currency in formattedCurrencies">{{currency.id}}</option>
-                    </select>
-    
-                </div>
-    
-                <div class="col-md-6">
-                    <label>to</label>
-                    <select v-model="to"  name="" id="" class="form-control">
-                            <option :value="currency.id" v-for="currency in formattedCurrencies">{{currency.id}}</option>
-                    </select>
-    
-                </div>
-    
-            </div>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <input type="text" v-model="amount" placeholder="Amount" class="form-control my-5" />
-                    <div class="text-center">
-                        <button :disabled="disableButton" @click='getRate()' class="btn btn-lg btn-primary">{{loading ? 'converting...': 'convert'}}</button>
-                    </div>
+                <div class="col-md-8 offset-md-3">
+                    <card v-on:delete-article="deletethisArticle($event)" v-on:clap-for-me="clapForMe($event)" v-for="article in articles" :title="article.title" :content="article.content"></card>
                 </div>
             </div>
-            <div class="row"></div>
-
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <h1 class="text-center display-2 mt-5">{{computed_amount}}</h1>
-                </div>
-
-            </div>
-    
         </div>
+    </div>
+       
     
     
     </div>

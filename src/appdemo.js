@@ -1,69 +1,82 @@
+
+
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 
+Vue.component(
+    'card',
+    {
+        props:[
+            'title', 'content'
+        ],
+        data: function(){
+            return {
+                claps : 0
+            }
+        }
+        ,
+        template: `
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-tittle">
+
+                    {{title}}
+
+                </h3>
+                <div class="card-text">
+                    {{content}}
+
+                </div>
+                <div class="text-center text-muted display-3">
+                    {{claps}}
+
+                </div>
+                <button @click="clapForMe" class="btn btn-info btn-sm"> Clap for me </button>
+  
+                <button @click="deleteArticle" class="btn btn-danger btn-sm"> Delete </button>
+            </div>
+        </div>
+        `,
+        methods: {
+            deleteArticle(){
+                
+                this.$emit('delete-article', this.title)
+            },
+            clapForMe(){
+                
+                this.claps ++
+            },
+        },
+    }
+
+)
 
 new Vue({
     el: '#app',
     data:{
-        currencies:{},
-        amount:0,
-        computed_amount:0,
-        loading: false,
-        from:'',
-        to:''
-    },
-    mounted() {
-        this.getCurrencies();
-        this.computed_amount = this.amount
+        articles:[
+            {
+                title: "Building fullstack ",
+                content: "William Yang's Award"
+            },
+            {
+                title: "Advanced Frontend Dev",
+                content: "D Yang's Award"
+            },
+            {
+                title: "Java Backend",
+                content: "William Yang's fist Job"
+            },
+    ]
     },
     methods: {
-        getCurrencies(){
-            const currencies = localStorage.getItem('currencies')
-
-            if (currencies){
-                this.currencies = JSON.parse(currencies)
-                return ;
-            }
-            axios.get("https://free.currencyconverterapi.com/api/v6/currencies?apiKey=0c041c2c7d7aa0a329fd")
-            .then(res => {
-                this.currencies = res.data.results
-                localStorage.setItem('currencies', JSON.stringify(res.data.results))
-                console.log(res)
-            })
-            .catch(err => {
-                console.error(err); 
-            })
-        },
-        getRate(){
-            this.loading = true;
-            axios.get(`https://free.currencyconverterapi.com/api/v6/convert?q=${this.from}_${this.to}&compact=ultra&apiKey=0c041c2c7d7aa0a329fd`)
-            .then(res => {
-                console.log(res)
-                rate = res.data[`${this.from}_${this.to}`]
-                this.computed_amount = (this.amount * rate).toFixed(3)
-                this.loading =false;
-            })
-            .catch(err => {
-                console.error(err); 
-            })
+        deletethisArticle(event){
+            console.log('delete', event);
+            this.articles = this.articles.filter(article => article.title !== event)
         }
-    },
-    computed: {
-        formattedCurrencies(){
-            return Object.values(this.currencies)
-        },
-        disableButton(){
-            return this.amount ===0 || !this.amount || this.loading;
-        }
-    },
-    watch: {
-        from(){
-            this.computed_amount = 0;
-        },
-        to(){
-            this.computed_amount =0;
-        }
-    },
+    }
 });
+
+
 
 
