@@ -3,6 +3,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueNoty from "vuejs-noty"
 import "vuejs-noty/dist/vuejs-noty.css"
+import "vue-wysiwyg/dist/vueWysiwyg.css";
+
 // import Foo from './components/Foo.vue'
 // import Bar from './components/Bar.vue'
 
@@ -10,15 +12,18 @@ Vue.config.productionTip = false
 
 // 0. 如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)
 import VueRouter from 'vue-router'
+import wysiwyg from 'vue-wysiwyg'
 
 Vue.use(VueRouter)
 Vue.use(VueNoty)
+Vue.use(wysiwyg, {})
 
 
 import Login from './views/Login.vue'
 import Signup from './views/Signup.vue'
 import Home from './views/Home.vue'
 import Article from './views/Article.vue'
+import CreateArticle from './views/CreateArticle.vue'
 // 2. 定义路由
 // 每个路由应该映射一个组件。 其中"component" 可以是
 // 通过 Vue.extend() 创建的组件构造器，
@@ -28,6 +33,7 @@ const routes = [
     {path: '/login', component: Login},
     {path: '/signup', component: Signup},
     {path: '/home', component: Home},
+    {path: '/article/create', component: CreateArticle},
     {path: '/article/:id', component: Article},
 ]
 

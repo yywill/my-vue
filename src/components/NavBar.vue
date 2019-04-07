@@ -11,6 +11,9 @@
       <li class="nav-item" v-if="!$root.auth.user">
         <router-link class="nav-link" to="/login">login</router-link>
       </li>
+      <li class="nav-item" v-if="$root.auth.user">
+        <router-link class="nav-link" to="/article/create">create article</router-link>
+      </li>
       <li class="nav-item" v-if="!$root.auth.user">
         <router-link class="nav-link" to="/signup">signup</router-link>
       </li>

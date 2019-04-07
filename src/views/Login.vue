@@ -34,7 +34,7 @@ export default {
   data(){
     return{
       email: '',
-      assword: '',
+      password: '',
       errors:{},
       loading: false
     }
