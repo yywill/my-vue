@@ -1,10 +1,17 @@
 <template>
-    <div class="row">
+<div>
+    <div class="d-flex mt-4 justify-content-between">
+        <button  @click="getNextArticles()" :disabled="articles.prev_page_url === null" class="btn btn-warning">Prev</button>
+        <button  @click="getNextArticles()" :disabled="articles.next_page_url === null"  class="btn btn-warning">Next</button>
+    </div>
+     <div class="row">
         <div class="col-md-8 offset-md-2" v-if="articles.data" :key="artcile.id" v-for="artcile in articles.data">
             <Article :article="artcile"></Article>
         </div>
 
     </div>
+</div>
+   
 </template>
 
 <script>
@@ -27,8 +34,8 @@ export default {
     },
 
     methods: {
-        getArticles(){
-            axios.get(`${config.apiUrl}/api/articles`, {
+        getArticles(url=`${config.apiUrl}/api/articles`){
+            axios.get(url, {
                 params: {
                     
                 }
@@ -39,6 +46,13 @@ export default {
             }).catch(({response})=>{
                 console.log(response)
             })
+        },
+
+        getNextArticles(){
+            this.getArticles(this.articles.next_page_url)
+        },
+         getPrevArticles(){
+            this.getArticles(this.articles.prev_page_url)
         }
     }
 
