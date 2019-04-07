@@ -56,12 +56,13 @@ export default {
         console.log(data)
       })
       .catch(({response}) => {
+        this.$noty.error("Oops... Something Wrong")
         if(response.status === 401){
           this.errors = {
             'email': ['password not match']
           }
         }else{
-
+          
           this.errors = response.data
         }
         console.log(response); 

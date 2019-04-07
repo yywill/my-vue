@@ -1,6 +1,8 @@
 import Vue from 'vue'
 // import router from './routes/index.js'
 import App from './App.vue'
+import VueNoty from "vuejs-noty"
+import "vuejs-noty/dist/vuejs-noty.css"
 // import Foo from './components/Foo.vue'
 // import Bar from './components/Bar.vue'
 
@@ -10,6 +12,7 @@ Vue.config.productionTip = false
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
+Vue.use(VueNoty)
 
 
 import Login from './views/Login.vue'
