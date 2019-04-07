@@ -18,6 +18,7 @@ Vue.use(VueNoty)
 import Login from './views/Login.vue'
 import Signup from './views/Signup.vue'
 import Home from './views/Home.vue'
+import Article from './views/Article.vue'
 // 2. 定义路由
 // 每个路由应该映射一个组件。 其中"component" 可以是
 // 通过 Vue.extend() 创建的组件构造器，
@@ -27,6 +28,7 @@ const routes = [
     {path: '/login', component: Login},
     {path: '/signup', component: Signup},
     {path: '/home', component: Home},
+    {path: '/article/:id', component: Article},
 ]
 
 // // 3. 创建 router 实例，然后传 `routes` 配置

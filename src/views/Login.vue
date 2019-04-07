@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="form-group">
-            <input v-model="password" type="passowrd" placeholder="password" class="form-control">
+            <input v-model="password" type="password" placeholder="password" class="form-control">
             <div class="errors" v-if="errors.password">
                 <small class="text-danger" :key="error" v-for="error in errors.password"  >{{error}}</small>
             </div>
