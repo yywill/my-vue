@@ -1,10 +1,12 @@
 <template>
     <div class="container">
-        <div class="card">
-            <div class="card-body">
+        <div class="card p-3">
+            <div class="card-title">
                     <input placeholder="title" type="text" class="form-control">
             </div>
-            <wysiwyg v-model="content"></wysiwyg>
+            
+            <wysiwyg class="my-3 md-3" v-model="content"></wysiwyg>
+            
             
         </div>
     </div>
