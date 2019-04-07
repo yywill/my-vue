@@ -6,6 +6,9 @@
           <h3 class="text-center">Signup</h3>
           <div class="form-group">
             <input v-model="name" type="text" placeholder="Name" class="form-control">
+            <div class="errors" v-if="errors">
+                <small class="text-danger" :key="error" v-for="error in errors.name"  >{{error}}</small>
+            </div>
           </div>
           <div class="form-group">
             <input v-model="email" type="text" placeholder="EMail" class="form-control">
@@ -26,16 +29,20 @@
 import axios from "axios";
 
 export default {
-  date() {
+  data() {
     return {
       email: "",
       name: "",
-      password: ""
+      password: "",
+      errors: {
+        name: null,
+        email: null,
+        password: null
+      }
     };
   },
   methods: {
     register() {
-      console.log(this.email, this.name, this.password);
       axios
         .post(
           "https://react-blog-api.bahdcasts.com/api/auth/register",
@@ -56,8 +63,13 @@ export default {
           this.$router.push('home')
         })
         .catch(({ response }) => {
-          console.log(response)
+          this.errors = response.data
         });
+    }
+  },
+  computed:{
+    hasError(){
+      return this.errors 
     }
   }
 };
