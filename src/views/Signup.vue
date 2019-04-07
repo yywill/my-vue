@@ -8,10 +8,10 @@
             <input v-model="name" type="text" placeholder="Name" class="form-control">
           </div>
           <div class="form-group">
-            <input v-model="email"  type="text" placeholder="EMail" class="form-control">
+            <input v-model="email" type="text" placeholder="EMail" class="form-control">
           </div>
           <div class="form-group">
-            <input v-model="password"  type="password" placeholder="password" class="form-control">
+            <input v-model="password" type="password" placeholder="password" class="form-control">
           </div>
           <div class="form-group text-center">
             <button @click="register()" class="btn form-control btn-success">Signup</button>
@@ -23,36 +23,42 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-    date(){
-        return {
-            email: '',
-            name: '',
-            password: ''
-        }
-        
-    },
-    methods:{
-        register(){
-            console.log(this.email, this.name, this.password);
-            axios.post("https://react-blog-api.bahdcasts.com/api/auth/register",{
-                name: this.name,
-                email: this.email,
-                password: this.password
-            }, {
-                headers: {
-                    'Access-Control-Allow-Origin': '*'
-  	            }
-            })
-            .then(res => {
-                console.log(res)
-            })
-            .catch(({response}) => {
-                console.error(response); 
-            })
-        }
+  date() {
+    return {
+      email: "",
+      name: "",
+      password: ""
+    };
+  },
+  methods: {
+    register() {
+      console.log(this.email, this.name, this.password);
+      axios
+        .post(
+          "https://react-blog-api.bahdcasts.com/api/auth/register",
+          {
+            name: this.name,
+            email: this.email,
+            password: this.password
+          },
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*"
+            }
+          }
+        )
+        .then(({data}) => {
+          localStorage.setItem('auth', JSON.stringify(data.data))
+          this.$root.auth = data.data;
+          this.$router.push('home')
+        })
+        .catch(({ response }) => {
+          console.log(response)
+        });
     }
-}
+  }
+};
 </script>
