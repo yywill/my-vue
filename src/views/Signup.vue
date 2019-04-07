@@ -37,6 +37,7 @@
 
 <script>
 import axios from "axios";
+import config from '@/config'
 
 export default {
   data() {
@@ -57,7 +58,8 @@ export default {
       this.loading = true;
       axios
         .post(
-          "https://react-blog-api.bahdcasts.com/api/auth/register",
+          `${config.apiUrl}/api/auth/register`
+          ,
           {
             name: this.name,
             email: this.email,
